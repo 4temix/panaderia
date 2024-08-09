@@ -1,0 +1,1157 @@
+@font-face {
+  font-family: "fontSimple";
+  src: url("../fonts/Freeman-Regular.ttf");
+}
+
+/* -------------intentar configurar la perspectiva 3d */
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ------------variables --------------*/
+:root {
+  --controls_color: #ff7b31;
+  --back_color: #ffffff;
+  --bg_cards: #ebe9e7;
+
+  --step--2: clamp(0.7813rem, 0.7747rem + 0.0326vi, 0.8rem);
+  --step--1: clamp(0.9375rem, 0.9158rem + 0.1087vi, 1rem);
+  --step-0: clamp(1.125rem, 1.0815rem + 0.2174vi, 1.25rem);
+  --step-1: clamp(1.35rem, 1.2761rem + 0.3696vi, 1.5625rem);
+  --step-2: clamp(1.62rem, 1.5041rem + 0.5793vi, 1.9531rem);
+  --step-3: clamp(1.944rem, 1.771rem + 0.8651vi, 2.4414rem);
+  --step-4: clamp(2.3328rem, 2.0827rem + 1.2504vi, 3.0518rem);
+  --step-5: clamp(2.7994rem, 2.4462rem + 1.7658vi, 3.8147rem);
+}
+/* ------------------header slytes-------------- */
+
+/* -------------nav styles-------------- */
+
+.logo {
+  width: 5rem;
+}
+
+/* estilos del header del nav */
+.nav_container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  z-index: 20;
+  transform: scale(1.1);
+  position: fixed;
+}
+/* estilos de los links del nav */
+.route {
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+.nav_links_color {
+  color: black;
+}
+
+.link_container {
+  width: 100%;
+  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.link_container a {
+  margin-left: 14px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.nav_style_color {
+  position: fixed;
+  animation-name: fixed_nav;
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+}
+
+.nav_default {
+  animation-name: nav_color;
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+}
+
+.links_select::before {
+  content: "";
+  width: 100%;
+  height: 4px;
+  bottom: -6px;
+  background-color: var(--controls_color);
+  border-radius: 20px;
+  position: absolute;
+  animation: width 0.2s ease;
+  animation: expadex 0.2s both;
+}
+
+/* -------------menu de celulares------------ */
+
+.menu-icon {
+  width: 50px;
+  height: 50px;
+  display: none;
+}
+
+.menu-icon img {
+  transform: scale(-1, 1);
+  height: 50px;
+}
+
+/* -------------main---------------------- */
+
+.block {
+  overflow-y: hidden;
+}
+
+.container {
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* slider styles */
+.img_container {
+  width: 100%;
+  height: 100vh;
+}
+
+.slider {
+  width: 100%;
+  height: 100%;
+}
+
+.slider_img {
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(0, 0, 0);
+  top: 0;
+  left: 0;
+  position: absolute;
+  overflow: hidden;
+  z-index: -10;
+}
+
+.banner_init {
+  animation: 1.8s banner_init;
+  animation-fill-mode: backwards;
+}
+
+.slider_img::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.221),
+    rgba(0, 0, 0, 0.221)
+  );
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.slider_img img {
+  position: absolute;
+}
+
+.slider_content h3 {
+  margin-top: 0;
+  margin-bottom: 0px;
+  font-size: 1.7rem;
+  color: var(--controls_color);
+  animation-name: text_init;
+  animation-duration: 1.8s;
+  animation-delay: 1s;
+  animation-fill-mode: both;
+  opacity: 0;
+}
+
+.slider_content {
+  padding-top: 10%;
+  padding-left: 2%;
+}
+
+.img_elements {
+  opacity: 0;
+  transition: opacity ease-in 0.4s;
+}
+
+.slider_content h2 {
+  margin-top: 10px;
+  font-size: var(--step-5);
+  font-family: "fontSimple";
+  color: white;
+  animation-name: text_init;
+  animation-duration: 1.8s;
+  animation-delay: 0.4s;
+  animation-fill-mode: both;
+  opacity: 0;
+}
+
+.show {
+  opacity: 1;
+}
+
+.btn {
+  padding: 10px 40px;
+  border-radius: 20px;
+  border: 2px solid white;
+  transition: background-color ease 0.3s;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background-color: #ff7b31;
+  border-radius: 20px;
+  transition: width 0.2s ease-in;
+  z-index: -10;
+}
+
+.next,
+.before {
+  color: white;
+  font-size: 2rem;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+.controls {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+}
+
+/* sobre nosotros */
+
+.about_us {
+  background-color: var(--back_color);
+}
+
+.about_us_elements {
+  display: flex;
+  padding-bottom: 50px;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about_container {
+  width: 50%;
+  position: relative;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: auto 120px 230px;
+}
+.about_container h2 {
+  position: relative;
+  max-width: 270px;
+  font-size: var(--step-3);
+  z-index: 10;
+}
+
+.about_container h2::before {
+  content: "";
+  width: 70px;
+  height: 30px;
+  background-color: var(--controls_color);
+  position: absolute;
+  left: -10px;
+  top: 25px;
+  z-index: -10;
+}
+
+.img_content {
+  width: 500px;
+  height: 250px;
+  position: relative;
+}
+
+.img1,
+.img2 {
+  margin-top: 5px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.img1 {
+  width: 20vw;
+  height: 40vh;
+  min-width: 299px;
+  grid-column: 1/3;
+  grid-row: 2/4;
+}
+
+.img2 {
+  width: 20vw;
+  height: 60vh;
+  max-width: 310px;
+  min-width: 299px;
+  grid-column: 3/7;
+  grid-row: 1/3;
+}
+
+.about_us_info {
+  height: 26vh;
+  overflow-y: hidden;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.auto {
+  height: auto;
+  transition: height 3s ease;
+}
+
+.btn_us {
+  padding: 10px 40px;
+  border-radius: 20px;
+  border: 2px solid black;
+  text-align: center;
+  transition: background-color ease 0.3s;
+  color: black;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn_us::before {
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background-color: #ff7b31;
+  border-radius: 20px;
+  transition: width 0.2s ease-in;
+  z-index: -10;
+}
+
+/* cards styles */
+
+.filter_section a {
+  color: black;
+  margin-right: 20px;
+  font-size: var(--step-0);
+  font-family: "fontSimple";
+  position: relative;
+}
+
+.links_filter_select::before {
+  content: "";
+  width: 100%;
+  height: 4px;
+  bottom: 0;
+  background-color: var(--controls_color);
+  border-radius: 20px;
+  position: absolute;
+  animation: width 0.2s ease;
+  animation: expadex 0.2s both;
+}
+
+.filter_section {
+  width: 100%;
+  padding-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cards_container {
+  background-color: var(--bg_cards);
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.title {
+  position: relative;
+  z-index: 10;
+  font-size: var(--step-2);
+}
+
+.title::before {
+  content: "";
+  width: 60px;
+  height: 20px;
+  left: -5px;
+  bottom: -1px;
+  background-color: var(--controls_color);
+  position: absolute;
+  z-index: -10;
+}
+
+.card_info {
+  text-align: center;
+}
+
+.card_interna_container {
+  min-height: 500px;
+  display: grid;
+  gap: 1.3rem;
+  /* ancho de las filas */
+  grid-auto-rows: 22rem;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+}
+
+.card {
+  width: 80%;
+  background-color: #ffff;
+  border-radius: 10px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  color: black;
+  box-shadow: rgba(126, 125, 125, 0.514) 2px 2px 20px;
+  transition: transform 0.1s ease;
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  align-items: center;
+}
+
+.card ul {
+  padding: 0;
+}
+
+.card li {
+  margin-bottom: 10px;
+}
+
+.card_img {
+  overflow: hidden;
+  width: 90%;
+  height: 150px;
+  border-radius: 10px;
+}
+
+/* figura logo */
+.figura {
+  position: absolute;
+  background-color: var(--controls_color);
+  width: 70px;
+  top: 0;
+  z-index: 1;
+  right: 6px;
+  animation: dis 0.5s both;
+}
+
+.figura_out {
+  padding: 8px;
+  position: absolute;
+  font-size: 1.4rem;
+  border-radius: 10px;
+  top: 120px;
+  background-color: rgb(243, 60, 60);
+  transform: rotate(30deg);
+  animation: out 0.5s both;
+  z-index: 1;
+}
+
+.contenedor-logo {
+  width: 80%;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 100px;
+}
+
+.cardfront {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  position: absolute;
+  z-index: 10;
+}
+/*window styles*/
+.background {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.521);
+  position: fixed;
+  z-index: 30;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card_window {
+  width: 25%;
+  height: 80vh;
+  min-width: 360px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation-name: scale_windows;
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+}
+
+.card_window::-webkit-scrollbar {
+  width: 7px;
+  height: 2px;
+  background: rgba(58, 58, 58, 0.363);
+  border-radius: 10px 200px 200px 10px;
+}
+
+.card_window::-webkit-scrollbar-thumb {
+  background: var(--controls_color);
+  border-radius: 20px;
+}
+
+.img_window {
+  min-width: 80%;
+  min-height: 30vh;
+  overflow: hidden;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.window_info {
+  width: 100%;
+}
+
+.window_info2 {
+  width: 100%;
+}
+
+.window_info::before {
+  content: "";
+  width: 90%;
+  height: 2px;
+  left: 18px;
+  background-color: black;
+  position: absolute;
+}
+
+.window_info::after {
+  content: "";
+  width: 90%;
+  height: 2px;
+  left: 18px;
+  background-color: black;
+  position: absolute;
+}
+
+.window_info2::after {
+  content: "";
+  width: 90%;
+  height: 2px;
+  background-color: black;
+  position: absolute;
+}
+
+.btnWhats {
+  margin-top: 10px;
+  padding: 24px 60px;
+  border-radius: 40px;
+  border: 2px solid black;
+  background-color: rgba(30, 228, 30, 0);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btnWhats::before {
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background-color: #2bf83c;
+  border-radius: 20px;
+  transition: width 0.2s ease-in;
+  z-index: -10;
+}
+
+.btnWhats svg {
+  width: 30px;
+  height: 30px;
+  left: 20px;
+  margin-right: 10px;
+  position: absolute;
+}
+
+.scale_down {
+  animation-name: scaleDown_windows;
+  animation-duration: 0.2s;
+  animation-fill-mode: both;
+}
+
+/* -------------------conatacto----------- */
+.Contacto_container {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.info_contact {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Contacto_container img {
+  position: fixed;
+  bottom: 0;
+  z-index: -20;
+}
+
+.bout_info h2 {
+  color: var(--controls_color);
+}
+
+/* animation load class */
+.load_content {
+  animation-name: load;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* styles contacto roberto */
+
+/* Estilo para los artículos */
+.vista {
+  margin: 10px;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.824);
+  width: 90%px;
+  height: auto;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 2;
+}
+
+.Encabezados {
+  color: var(--controls_color);
+  font-weight: bold;
+}
+
+/* Le linea que esta debajo de .Encabezados h2 */
+.underline {
+  width: 95%;
+  height: 8px;
+  background: rgba(142, 141, 140, 0.768);
+  border-radius: 3px;
+  position: absolute;
+  top: 65px;
+  left: 10px;
+  overflow: hidden;
+}
+
+/* aqui se crea una pequeña masa que ira moviendoce infinitamente adentro del ¨div¨ .underline */
+.underline span {
+  width: 15px;
+  height: 100%;
+  background: var(--controls_color);
+  border-radius: 3px;
+  position: absolute;
+  top: 0;
+  left: 15px;
+  animation: moving 2s linear infinite;
+}
+
+/* Estilos para los Encabezados del h4 */
+.titulos {
+  color: var(--controls_color);
+  font-weight: bold; /*permite especificar el grosor de la fuente y tiene varios valores posibles*/
+}
+
+/* Estilos para los parrafos */
+.parrafos {
+  color: rgb(255, 253, 253);
+}
+
+/* Estilo para los enlaces de redes sociales */
+.datos-redes a {
+  margin: 0 10px;
+  display: inline-block;
+}
+
+.Copyright {
+  /*para el cuadro del copyright*/
+  z-index: 2;
+  width: 100%;
+  height: 70px;
+  background-color: rgba(255, 253, 253, 0.733);
+  bottom: 0;
+}
+
+/* texto del copyright */
+.texto {
+  color: var(--controls_color);
+  text-align: center; /* Centrar texto */
+  font-size: 20px; /*Tamaño de la fuente*/
+}
+
+/* Estilo para los iconos SVG */
+svg {
+  width: 50px;
+  height: 50px;
+  fill: rgb(0, 0, 0); /* Color de los iconos */
+  margin: 10px; /* Margen entre iconos */
+}
+
+.titulos {
+  color: var(--controls_color);
+  font-weight: bold; /*permite especificar el grosor de la fuente y tiene varios valores posibles*/
+}
+
+/* Estilos para los parrafos */
+.parrafos {
+  color: rgb(0, 0, 0);
+}
+
+/*-------- paginacion---------- */
+
+.pag {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.itemPag {
+  border: 1.6px solid black;
+  margin-left: 3px;
+  padding: 10px;
+}
+/* ---------------hover styles------------- */
+.btn:hover::before {
+  width: 100%;
+  opacity: 1;
+}
+
+.card:hover {
+  transform: scale(1.1);
+  box-shadow: rgb(99, 97, 97) 5px 5px 20px;
+}
+
+.btnWhats:hover {
+  transform: scale(1.1);
+}
+
+.btn_us:hover::before {
+  transform: scale(1.5);
+  width: 100%;
+  opacity: 1;
+}
+
+.btnWhats:hover::before {
+  transform: scale(1.5);
+  width: 100%;
+  opacity: 1;
+}
+
+/* Esto se encargar de hacer que los SVG se prendan con multiples box-shadows */
+.facebook:hover {
+  background-color: rgb(56, 157, 240);
+  fill: rgb(0, 0, 0);
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgb(56, 157, 240), 0 0 45px rgb(56, 157, 240),
+    0 0 75px rgb(56, 157, 240), 0 0 115px rgb(56, 157, 240);
+}
+
+.instagram:hover {
+  background-color: rgb(255, 149, 0);
+  fill: rgb(0, 0, 0);
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgb(255, 149, 0), 0 0 45px rgb(255, 149, 0),
+    0 0 75px rgb(255, 149, 0), 0 0 115px rgb(255, 149, 0);
+}
+
+.whatsapp:hover {
+  background-color: rgb(7, 246, 31);
+  fill: rgb(0, 0, 0);
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgb(7, 246, 31), 0 0 45px rgb(7, 246, 31),
+    0 0 75px rgb(7, 246, 31), 0 0 115px rgb(7, 246, 31);
+}
+/* ----------------loader-------------- */
+
+@keyframes loader {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes disappear {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.ld {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgb(0, 0, 0);
+  top: 0;
+  z-index: 200;
+}
+
+.loader::after,
+.loader::before {
+  content: "";
+  animation: loader 2s linear infinite;
+  border: 3px solid rgb(239, 239, 239);
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  border-radius: 50%;
+  top: 50%;
+  right: 50%;
+}
+
+.loader::after {
+  opacity: 0;
+  animation-delay: 1s;
+}
+
+.desaparece {
+  animation-name: disappear;
+  animation-duration: 0.4s;
+  animation-fill-mode: both;
+}
+
+/*----------------------- cards loaders-------------- */
+
+.card_load {
+  width: 80%;
+  background-color: #ffff;
+  border-radius: 10px;
+  position: relative;
+  color: black;
+  transition: transform 0.1s ease;
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: rgba(126, 125, 125, 0.514) 2px 2px 20px;
+}
+
+.card_img_load {
+  background-color: #b6b4b3;
+  width: 90%;
+  height: 30vh;
+  border-radius: 20px;
+  animation: loaderCards 2.3s infinite;
+}
+
+.card_info_load {
+  width: 100%;
+  height: 30vh;
+  padding-top: 5px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+}
+
+.h4,
+.li {
+  background-color: #b6b4b3;
+  width: 60%;
+  height: 10px;
+  animation: loaderCards 2.3s infinite;
+}
+
+/* ---------------animaciones-------------- */
+
+/* animacion al iniciar el banner */
+@keyframes banner_init {
+  from {
+    transform: scale(1.1);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* animacion del texto del banner */
+@keyframes text_init {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* animacion de la ventana de vista de productos */
+@keyframes scale_windows {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+/* animacion de la ventana de salida */
+@keyframes scaleDown_windows {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(0);
+  }
+}
+
+/* aniamcion para quirtarle el color al nav */
+@keyframes nav_color {
+  from {
+    background-color: rgba(255, 255, 255, 0.418);
+    transform: scale(1);
+  }
+
+  to {
+    background-color: rgba(6, 6, 6, 0);
+    transform: scale(1.1);
+  }
+}
+
+/* animacion para hacer el nav pegajoso */
+@keyframes fixed_nav {
+  from {
+    background-color: rgba(255, 255, 255, 0);
+  }
+
+  to {
+    background-color: rgba(255, 255, 255, 0.418);
+    backdrop-filter: blur(10px);
+    transform: scale(1);
+  }
+}
+
+/* animacion de carga de cada elemento al entrar en pantalla */
+@keyframes load {
+  from {
+    visibility: hidden;
+  }
+
+  to {
+    transform: translateY(0);
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+/* animacion de la carga de las cards */
+@keyframes loaderCards {
+  0% {
+    opacity: 1.5;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1.5;
+  }
+}
+
+/* animacion del selecctor que esta debajo de los links del menu */
+@keyframes expadex {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+/* animacion del indicador de disponibilidad: no disponible */
+@keyframes out {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 47%;
+  }
+}
+
+/* animacion del indicador de disponibilidad: disponible */
+@keyframes dis {
+  from {
+    height: 0;
+  }
+
+  to {
+    border-radius: 0% 0% 100% 100%;
+    height: 50px;
+  }
+}
+
+/* animacion de la linea de contactos */
+@keyframes moving {
+  0% {
+    left: -20px;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/*---------------- mediaquerys------- */
+
+@media screen and (max-width: 1075px) {
+  /* menu styles cell */
+  .nav_container {
+    height: 0.1vh;
+    transform: scale(1);
+    position: fixed;
+    align-items: start;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+
+  .link_container {
+    height: 300px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.322);
+    backdrop-filter: blur(10px);
+    transform: translateX(130%);
+    transition: transform ease 0.5s;
+  }
+
+  .route {
+    color: black;
+  }
+
+  /* about us styles cell */
+  .about_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .img1 {
+    min-width: 100%;
+  }
+
+  .img2 {
+    min-width: 100%;
+  }
+
+  /* card styles cell */
+
+  .card {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .card_window {
+    width: 70%;
+    min-width: 300px;
+  }
+
+  .filter_section a {
+    margin-right: 10px;
+    font-size: 18;
+  }
+
+  /* contacto styles */
+  .info_contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .datos-map {
+    width: 60%;
+    min-width: 320px;
+  }
+}
