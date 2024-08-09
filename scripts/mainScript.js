@@ -63,7 +63,7 @@ let options = {
     "content-Type": "application/json",
   },
 };
-fetch("http://panaderiar.somee.com/panaderia/getbanner", options)
+fetch("https://panaderiar.somee.com/panaderia/getbanner", options)
   //agregando las imagenes al DOM
   .then((res) => res.json())
   .then((response) => {
@@ -494,7 +494,7 @@ function cargar(entrys) {
       if (id == "products" && $cards.length == 0) {
         loading();
         fetchResult = peticion(
-          `http://panaderiar.somee.com/panaderia/products/${destruc[1]}`,
+          `https://panaderiar.somee.com/panaderia/products/${destruc[1]}`,
           "#cards"
         );
       }
@@ -526,14 +526,14 @@ window.addEventListener("hashchange", async (e) => {
   if (location.hash == `#cards/${destruc[1]}`) {
     loading();
     fetchResult = peticion(
-      `http://panaderiar.somee.com/panaderia/products/${destruc[1]}`,
+      `https://panaderiar.somee.com/panaderia/products/${destruc[1]}`,
       "#cards"
     );
     //comparar si la url que estroy buscando para hacer la carga es la misma que esta esta actualzamente en el navegador
   } else if (location.hash == `#filter/${destruc[1]}/${destruc[2]}`) {
     loading();
     fetchResult = peticion(
-      `http://panaderiar.somee.com/panaderia/filter/${destruc[1]}/${destruc[2]}`,
+      `https://panaderiar.somee.com/panaderia/filter/${destruc[1]}/${destruc[2]}`,
       `#filter/${destruc[1]}`
     );
   }
