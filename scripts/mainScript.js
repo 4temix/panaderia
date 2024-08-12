@@ -202,7 +202,7 @@ document.addEventListener("click", (e) => {
     if ($TextAbout.classList.contains("auto")) {
       $btnUs.innerText = "Ver menos";
     } else {
-      $btnUs.innerText = "Saver mas";
+      $btnUs.innerText = "Saber mas";
     }
   }
 
