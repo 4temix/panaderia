@@ -25,7 +25,7 @@ let Rmargin = "-380px";
 function send(text) {
   // Codificar el mensaje para la URL
   let urlEncodedMessage = encodeURIComponent(text);
-  let phoneNumber = 8292918171;
+  let phoneNumber;
 
   // Construir la URL de WhatsApp con el número de teléfono y el mensaje codificado
   var whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=Esta disponible el producto: ${urlEncodedMessage}`;
